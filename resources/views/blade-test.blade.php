@@ -13,8 +13,31 @@
 
 
         @php
-            echo 'hello';
+            $array = ['john doe', 'emma', 'brian'];
+            print_r($array);
         @endphp
+
+
+        <ul>
+            @foreach ($array as $arr)
+                <li>{{ $arr }}</li>
+            @endforeach
+        </ul>
+
+        <ul>
+            @for ($i = 0; $i < count($array); $i++)
+                <li>{{ $array[$i] }}</li>
+            @endfor
+        </ul>
+
+        @empty()
+        @endempty
+
+        @include('')
+
+
+        @isset()
+        @endisset
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero architecto dolores aspernatur dolorem dolorum
             iure provident laborum quidem. Tempore, maxime?</p>
