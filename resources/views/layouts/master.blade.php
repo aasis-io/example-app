@@ -13,6 +13,8 @@
         <ul>
             <li><a href="{{ url('blade-test') }}">Home</a></li>
             <li><a href="{{ url('contact') }}">Contact</a></li>
+            <li><a href="{{ url('about') }}">About</a></li>
+
         </ul>
     </nav>
 
