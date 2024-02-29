@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,16 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('about', function () {
-    return view('about');
-});
-
-
-Route::get('contact', function () {
-    return view('contact');
-});
-
 
 
 // Route Methods
@@ -70,6 +61,17 @@ Route::group(['as' => 'animals.', 'prefix' => 'animals'], function () {
 });
 
 
+
+
 Route::get('blade-test', function() {
     return view('blade-test');
 })->name('blade-test');
+
+
+Route::get('about', function () {
+    return view('about');
+});
+
+
+Route::get('contact', [testController::class,'contact'])->name('contact');
+
