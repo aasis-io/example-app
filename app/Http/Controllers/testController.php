@@ -12,4 +12,7 @@ class testController extends Controller
     public function about(){
         return view("about");
     }
+    public function guide(){
+        return view("guide");
+    }
 }
