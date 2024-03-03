@@ -49,6 +49,13 @@ Route::get('employee/{id?}', function ($eid = null) {
     ];
 });
 
+Route::get('manager/{id?}', function ($mid = null) {
+
+    return [
+        'eid' => $mid,
+        'ename' => 'John Doe'
+    ];
+});
 
 
 
