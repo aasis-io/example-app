@@ -41,14 +41,6 @@ Route::get('person/{id?}', function ($id = null) {
     ];
 });
 
-Route::get('employee/{id?}', function ($eid = null) {
-
-    return [
-        'eid' => $eid,
-        'ename' => 'John Doe'
-    ];
-});
-
 
 
 
