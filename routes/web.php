@@ -77,6 +77,10 @@ Route::get('contact', function () {
     return view('contact');
 });
 
+Route::get('green', function () {
+    return view('green');
+});
+
 
 Route::get('contact', [testController::class,'contact'])->name('contact');
 
