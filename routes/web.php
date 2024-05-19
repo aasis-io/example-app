@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\testController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,4 +82,7 @@ Route::get('contact', function () {
 
 
 Route::get('contact', [testController::class,'contact'])->name('contact');
+Route::get('contact/store', [testController::class,'store'])->name('contact.store');
+
+Route::resource('blog', BlogController::class);
 

@@ -3,7 +3,7 @@
 @section('content')
     <main>
 
-        @if (false)
+        @if (true)
             <h3>Site Contents!</h3>
         @elseif(false)
             <h3>Hello! I am from else if part!</h3>
@@ -11,12 +11,9 @@
             <h3>I am rendering from else part!</h3>
         @endif
 
-
         @php
             $array = ['john doe', 'emma', 'brian'];
-            print_r($array);
         @endphp
-
 
         <ul>
             @foreach ($array as $arr)
@@ -30,14 +27,16 @@
             @endfor
         </ul>
 
-        @empty()
+        @empty($array)
+            <p>No items found.</p>
         @endempty
 
-        @include('')
-
-
-        @isset()
+        @isset($array)
+            <p>Array is set and has {{ count($array) }} items.</p>
         @endisset
+
+        {{-- Example of including another Blade view --}}
+        {{-- @include('view.name') --}}
 
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero architecto dolores aspernatur dolorem dolorum
             iure provident laborum quidem. Tempore, maxime?</p>

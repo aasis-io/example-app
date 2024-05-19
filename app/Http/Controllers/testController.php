@@ -15,4 +15,7 @@ class testController extends Controller
     public function guide(){
         return view("guide");
     }
+    public function store(){
+        return 'none';
+    }
 }
