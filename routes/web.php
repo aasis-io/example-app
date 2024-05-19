@@ -65,7 +65,7 @@ Route::group(['as' => 'animals.', 'prefix' => 'animals'], function () {
 
 
 
-Route::get('blade-test', function() {
+Route::get('blade-test', function () {
     return view('blade-test');
 })->name('blade-test');
 
@@ -81,8 +81,7 @@ Route::get('contact', function () {
 
 
 
-Route::get('contact', [testController::class,'contact'])->name('contact');
-Route::get('contact/store', [testController::class,'store'])->name('contact.store');
+Route::get('contact', [testController::class, 'contact'])->name('contact');
+Route::get('contact/store', [testController::class, 'store'])->name('contact.store');
 
 Route::resource('blog', BlogController::class);
-
