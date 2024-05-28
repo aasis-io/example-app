@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,10 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        // $blog = Blog::all();         // $blog = DB::select('SELECT * FROM blogs');
-
-
-
+        // $blog = Blog::all();
+        // $blog = DB::select('SELECT * FROM blogs');
 
         //create data
         // $blog = new Blog();
@@ -36,11 +35,24 @@ class BlogController extends Controller
         // $blog = Blog::where(['status' => 0, 'id' => 1])->get();
 
         //delete data
-        $blog = Blog::FindOrFail(2);
-        $blog->delete();
+        // $blog = Blog::FindOrFail(2);
+        // $blog->delete();
 
-        dd($blog);
+        // $blog = Blog::with('category')->get();
+        // // $category = $blog->category;
+
+        // foreach ($blog as $b){
+        //    echo $b->title . '->' . $b->category->name;
+        //    echo "</br>";
+
+        // }
+
+        // dd($blog);
         // return $blog;
+
+        $category = Category::with('blogs')->find(1);
+
+        return $category;
     }
     // public function index()
     // {

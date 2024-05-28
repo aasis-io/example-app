@@ -10,4 +10,12 @@ class Blog extends Model
     use HasFactory;
     protected $table = 'blogs';
 
+
+    public function category(){
+        //hasone
+        //belongsTo
+        return $this->belongsTo(Category::class);
+
+    }
+
 }
