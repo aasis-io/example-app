@@ -50,9 +50,11 @@ class BlogController extends Controller
         // dd($blog);
         // return $blog;
 
-        $category = Category::with('blogs')->find(1);
+        // $category = Category::with('blogs')->find(1);
 
-        return $category;
+        // return $category;
+
+
     }
     // public function index()
     // {
@@ -66,6 +68,9 @@ class BlogController extends Controller
     public function create()
     {
         //
+        $categories = Category::all();
+
+        return view('blog.create', compact('categories'));
     }
 
     /**
@@ -73,7 +78,12 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category' => ['required', 'integer'],
+            'title' => ['required', 'max:255', 'min:2'],
+            'body' => ['required'],
+            'status' => ['required', 'boolean']
+        ]);
     }
 
     /**

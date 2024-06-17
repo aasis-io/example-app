@@ -5,26 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="{{ url('blade-test') }}">Home</a></li>
-            <li><a href="{{ url('contact') }}">Contact</a></li>
-            <li><a href="{{ url('about') }}">About</a></li>
-
-        </ul>
-    </nav>
-
 
     @yield('content')
 
-
-    <footer>
-        <h2>Footer</h2>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
