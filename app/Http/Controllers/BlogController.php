@@ -82,8 +82,12 @@ class BlogController extends Controller
             'category' => ['required', 'integer'],
             'title' => ['required', 'max:255', 'min:2'],
             'body' => ['required'],
-            'status' => ['required', 'boolean']
+            'status' => ['required',  'boolean']
         ]);
+
+        //Sotre data
+        $blog = new Blog();
+        $blog->category_id = $request->category;
     }
 
     /**
