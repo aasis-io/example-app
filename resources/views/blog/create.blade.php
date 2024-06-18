@@ -14,8 +14,24 @@
                         </div>
                     @endforeach
                 @endif
-                <form action="{{ route('blog.store') }}" method="post">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <form action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <div class="form-group mb-3">
+                        <label for="">Image</label>
+
+                        <input type="file" name="image" class="form-control">
+                        {{-- @if ($errors->has('category'))
+                            <code>{{ $errors->first('category') }}</code>
+                        @endif --}}
+                        @error('image')
+                            <code>{{ $message }}</code>
+                        @enderror
+                    </div>
                     <div class="form-group mb-3">
                         <label for="">Category</label>
 

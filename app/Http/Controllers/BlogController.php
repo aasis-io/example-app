@@ -82,12 +82,33 @@ class BlogController extends Controller
             'category' => ['required', 'integer'],
             'title' => ['required', 'max:255', 'min:2'],
             'body' => ['required'],
-            'status' => ['required',  'boolean']
+            'status' => ['required',  'boolean'],
+            'image' => ['required',  'image', 'max:3000']
         ]);
+
+        $imagePath = $this->uploadFile($request);
 
         //Sotre data
         $blog = new Blog();
         $blog->category_id = $request->category;
+        $blog->image = $imagePath;
+        $blog->title = $request->title;
+        $blog->body = $request->body;
+        $blog->status = $request->status;
+        $blog->save();
+
+        session()->flash('success', 'Your blog has been stored successfully!');
+        return redirect()->back();
+    }
+
+    public function uploadFile(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            return $imagePath = 'upload/' . $imageName;
+        }
     }
 
     /**
