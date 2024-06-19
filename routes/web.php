@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\testController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,69 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route Methods
-
-
-/*
-
-* 1. GET
-* 2. POST
-* 3. PUT
-* 4. PATCH
-* 5. DELETE
-
-*/
-
-
-Route::get('person/{id?}', function ($id = null) {
-
-    return [
-        'id' => $id,
-        'name' => 'John Doe'
-    ];
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
-
-Route::get('animals', function () {
-    return 'Animals';
-})->name('animals');
-
-
-// Route Grouping
-
-Route::group(['as' => 'animals.', 'prefix' => 'animals'], function () {
-    Route::get('dog', function () {
-        return 'Woof!';
-    })->name('dog');
-
-    Route::get('cat', function () {
-        return 'Meow!';
-    })->name('cat');
-});
-
-
-
-
-Route::get('blade-test', function () {
-    return view('blade-test');
-})->name('blade-test');
-
-
-Route::get('about', function () {
-    return view('about');
-});
-
-Route::get('contact', function () {
-    return view('contact');
-});
-
-
-
-
-Route::get('contact', [testController::class, 'contact'])->name('contact');
-Route::get('contact/store', [testController::class, 'store'])->name('contact.store');
-
-Route::resource('blog', BlogController::class);
+require __DIR__.'/auth.php';
